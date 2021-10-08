@@ -12,3 +12,13 @@ if word != "q"
 else
   break
 end
+
+response = HTTP.get("https://api.wordnik.com/v4/word.json/#{input_word}/pronunciations?useCanonical=false&limit=50&api_key=YOURAPIKEY")
+pronunciations = response.parse(:json)
+i = 0
+puts "here is pronunciation"
+pronunciations.length do
+  pronunciation = pronunciations[i]
+  puts pronunciation["raw"]
+  i += 1
+end
